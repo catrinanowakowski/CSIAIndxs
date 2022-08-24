@@ -24,3 +24,5 @@ Imports:
     pacman,
     ggplot2
 VignetteBuilder: knitr
+URL: https://github.com/catrinanowakowski/CSIAIndxs
+BugReports: https://github.com/catrinanowakowski/CSIAIndxs/issues
