@@ -31,7 +31,13 @@ df <- label_TS_Nitrogen(df = DATASET)
 #> Warning: Removed 3 rows containing missing values (geom_point).
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-label_TS_Nitrogen-1.png" width="100%" />
+
+``` r
+df <- calc_sum_v(df = df)
+```
+
+<img src="man/figures/README-calc_sum_v-1.png" width="100%" />
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
 up-to-date. `devtools::build_readme()` is handy for this. You could also

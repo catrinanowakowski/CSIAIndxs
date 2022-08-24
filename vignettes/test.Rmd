@@ -19,5 +19,6 @@ library(CSIAIndxs)
 data("DATASET")
 
 df <- label_TS_Nitrogen(df = DATASET)
+df <- calc_sum_v(df)
 
 ```
