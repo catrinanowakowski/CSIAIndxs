@@ -40,12 +40,29 @@ df <- label_TS_Nitrogen(df = DATASET)
 ```
 
 
+```{r}
+df <- calc_TP(df = df)
+```
+
+
 
 
 ```{r calc_sum_v}
 
 df <- calc_sum_v(df = df)
 ```
+
+```{r}
+
+df <- pull_AA(df = df, AA_nm = "Phe")
+
+library(ggplot2)
+ggplot() +
+  geom_point(data = df, aes(x = smp, y = Phe, color = smp), size = 4) +
+  theme_bw()
+
+```
+
 
 
 

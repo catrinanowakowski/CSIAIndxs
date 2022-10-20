@@ -34,10 +34,76 @@ df <- label_TS_Nitrogen(df = DATASET)
 <img src="man/figures/README-label_TS_Nitrogen-1.png" width="100%" />
 
 ``` r
+df <- calc_TP(df = df)
+#> Loading required package: propagate
+#> Loading required package: MASS
+#> Loading required package: tmvtnorm
+#> Warning: package 'tmvtnorm' was built under R version 4.1.1
+#> Loading required package: mvtnorm
+#> Loading required package: Matrix
+#> Loading required package: stats4
+#> Loading required package: gmm
+#> Warning: package 'gmm' was built under R version 4.1.1
+#> Loading required package: sandwich
+#> Warning: package 'sandwich' was built under R version 4.1.1
+#> Loading required package: Rcpp
+#> Loading required package: ff
+#> Warning: package 'ff' was built under R version 4.1.1
+#> Loading required package: bit
+#> 
+#> Attaching package: 'bit'
+#> The following object is masked from 'package:base':
+#> 
+#>     xor
+#> Attaching package ff
+#> - getOption("fftempdir")=="C:/Users/catri/AppData/Local/Temp/RtmpodW5Qo/ff"
+#> - getOption("ffextension")=="ff"
+#> - getOption("ffdrop")==TRUE
+#> - getOption("fffinonexit")==TRUE
+#> - getOption("ffpagesize")==65536
+#> - getOption("ffcaching")=="mmnoflush"  -- consider "ffeachflush" if your system stalls on large writes
+#> - getOption("ffbatchbytes")==165056348.16 -- consider a different value for tuning your system
+#> - getOption("ffmaxbytes")==8252817408 -- consider a different value for tuning your system
+#> 
+#> Attaching package: 'ff'
+#> The following objects are masked from 'package:utils':
+#> 
+#>     write.csv, write.csv2
+#> The following objects are masked from 'package:base':
+#> 
+#>     is.factor, is.ordered
+#> Loading required package: minpack.lm
+#> Warning: package 'minpack.lm' was built under R version 4.1.1
+#> Loading required package: dplyr
+#> 
+#> Attaching package: 'dplyr'
+#> The following object is masked from 'package:MASS':
+#> 
+#>     select
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+```
+
+``` r
 df <- calc_sum_v(df = df)
 ```
 
 <img src="man/figures/README-calc_sum_v-1.png" width="100%" />
+
+``` r
+df <- pull_AA(df = df, AA_nm = "Phe")
+
+library(ggplot2)
+ggplot() +
+  geom_point(data = df, aes(x = smp, y = Phe, color = smp), size = 4) +
+  theme_bw()
+```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
 up-to-date. `devtools::build_readme()` is handy for this. You could also
