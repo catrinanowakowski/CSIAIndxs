@@ -3,16 +3,16 @@
 #' @param df PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
+#' @seealso
 #'  \code{\link[ggplot2]{ggplot}},\code{\link[ggplot2]{geom_point}},\code{\link[ggplot2]{aes}},\code{\link[ggplot2]{ggtheme}}
 #' @rdname calc_sum_v
-#' @export 
+#' @export
 #' @importFrom ggplot2 ggplot geom_point aes theme_bw
 calc_sum_v <- function(df){
   # df <- DATASET
@@ -34,16 +34,22 @@ calc_sum_v <- function(df){
 
   smp_nms <- unique(df$smp)
   for(i in 1:length(smp_nms)){
-    df_smp$T_mean[df_smp$smp == smp_nms[i]] <-mean( as.numeric(df_smp[df_smp$smp == smp_nms[i],names(df_smp)%in%trophic_names ]))
-    df_smp$T_SD[df_smp$smp == smp_nms[i]] <-sd( as.numeric(df_smp[df_smp$smp == smp_nms[i],names(df_smp)%in%trophic_names ]))
-    df_smp$nT[df_smp$smp == smp_nms[i]] <-length( as.numeric(df_smp[df_smp$smp == smp_nms[i],names(df_smp)%in%trophic_names ]))
-    df_smp$nT_SD[df_smp$smp == smp_nms[i]] <- 0 ## Needed for format
+    df_smp$T_mean[df_smp$smp == smp_nms[i]] <-mean( as.numeric(df_smp[df_smp$smp == smp_nms[i],names(df_smp)%in%trophic_names ]), na.rm = TRUE)
+    df_smp$T_SD[df_smp$smp == smp_nms[i]] <-sd( as.numeric(df_smp[df_smp$smp == smp_nms[i],names(df_smp)%in%trophic_names ]), na.rm = TRUE)
+    # df_smp$nT[df_smp$smp == smp_nms[i]] <-length( as.numeric(df_smp[df_smp$smp == smp_nms[i],names(df_smp)%in%trophic_names ]))
+    # df_smp$nT_SD[df_smp$smp == smp_nms[i]] <- 0 ## Needed for format
   }
 
 
   for(i in 1:length(smp_nms) ){
-    T_smp_nms <- names(df_smp)[names(df_smp) %in% trophic_names]
-    # sum_txt <-paste0("abs(",T_smp_nms," - T_mean)",collapse="+")
+    df_calc <- df_smp[df_smp$smp == smp_nms[i] ,]
+    df_calc <- df_calc[,!is.na( df_calc[1,])]
+
+    df_calc$nT <- length( as.numeric(df_calc[,names(df_calc)%in%trophic_names ]))
+    df_calc$nT_SD <- 0 ## Needed for format
+
+
+    T_smp_nms <- names(df_calc)[names(df_calc) %in% trophic_names]
     sum_txt <-paste0("(((",T_smp_nms," - T_mean)^2)^(1/2))",collapse="+")
     EXPR_char <- paste0("(",sum_txt,")/nT")
     EXPR <- str2expression(EXPR_char)
