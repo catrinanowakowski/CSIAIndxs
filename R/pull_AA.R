@@ -20,8 +20,8 @@ pull_AA <- function(df, AA_nm){
 
 
   for (smp in unique(df$smp)) {
-    if(!is.na(df$Corrected_delta_15_N[df$smp == smp & df$AAs ==
-                                      AA_nm])){
+    if(length(df$Corrected_delta_15_N[df$smp == smp & df$AAs ==
+                                      AA_nm])>0){
       AA_Value <- df$Corrected_delta_15_N[df$smp == smp & df$AAs ==
                                             AA_nm]
       df[df$smp == smp, AA_nm] <- AA_Value[!is.na(AA_Value)]
