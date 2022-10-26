@@ -16,6 +16,7 @@ pull_AA <- function(df, AA_nm){
   # df <- DATASET
   # df <- label_TS_Nitrogen(df)
   # AA_nm <- "Phe"
+  df <- df[!is.na(df$AAs),]
 
 
   for (smp in unique(df$smp)) {
