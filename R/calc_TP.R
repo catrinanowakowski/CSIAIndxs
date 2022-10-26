@@ -38,7 +38,7 @@ calc_TP <- function(df,
                     TDF2 = 5.5, #flying fish
                     TDF2_SD = 0){
   ############################################
-  ## test function inputs
+  # ## test function inputs
   # df <- DATASET
   # df <- label_TS_Nitrogen(df)
   # df <- df[!is.na(df$AAs),]
