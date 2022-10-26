@@ -18,12 +18,15 @@ pull_AA <- function(df, AA_nm){
   # AA_nm <- "Phe"
 
 
-  for(smp in unique(df$smp)){
-    AA_Value <- df$Corrected_delta_15_N[df$smp == smp & df$AAs == AA_nm]
-    df[df$smp == smp,AA_nm] <- AA_Value[!is.na(AA_Value)]
-
-    SD_Value <- df$Stdev[df$smp == smp & df$AAs == AA_nm]
-    df[df$smp == smp,paste0(AA_nm,"_SD")] <- SD_Value[!is.na(SD_Value)]
+  for (smp in unique(df$smp)) {
+    if(!is.na(df$Corrected_delta_15_N[df$smp == smp & df$AAs ==
+                                      AA_nm])){
+      AA_Value <- df$Corrected_delta_15_N[df$smp == smp & df$AAs ==
+                                            AA_nm]
+      df[df$smp == smp, AA_nm] <- AA_Value[!is.na(AA_Value)]
+      SD_Value <- df$Stdev[df$smp == smp & df$AAs == AA_nm]
+      df[df$smp == smp, paste0(AA_nm, "_SD")] <- SD_Value[!is.na(SD_Value)]
+    }
 
   }
 
