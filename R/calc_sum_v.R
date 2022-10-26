@@ -55,7 +55,6 @@ calc_sum_v <- function(df){
     EXPR <- str2expression(EXPR_char)
 
 
-    df_calc <- df_smp[df_smp$smp == smp_nms[i] ,]
     values <- c(T_smp_nms, "T_mean", "nT")
     SDs <- c(paste0(T_smp_nms,"_SD"), "T_SD", "nT_SD")
 
