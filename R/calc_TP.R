@@ -48,7 +48,7 @@ calc_TP <- function(df,
   # Beta <- 3.3 # Non Vascular beta
   # Beta_SD <- 1.8
   #
-  # eq_TDF_n <- 1 #2
+  # eq_TDF_n <- 3 #2
   #
   # TDF1 <- 7.6 #copepod
   # TDF1_SD <- 1.4 # Chikaraishi et al 2007
@@ -77,8 +77,7 @@ calc_TP <- function(df,
     EXPR <- expression((AA_trp - AA_src - TDF1 - Beta)/TDF2 + 2)
   }else if(eq_TDF_n == 3){
     #coral equation
-    EXPR <- expression(((AA_trp+offset) - AA_src - TDF1 - Beta)/TDF2 + 2)
-
+    EXPR <- expression(( (AA_trp+offset) - AA_src - Beta)/TDF1 + 1)
   }
 
 
@@ -103,10 +102,11 @@ calc_TP <- function(df,
     }else if(eq_TDF_n == 3){
       DAT <- data.frame(
         AA_trp= c(mydata[mydata$smp == smp_nms[i],AA_trp], mydata[mydata$smp == smp_nms[i], paste0(AA_trp,"_SD")]),
+        offset = c(3.4, 0.1),
         AA_src  = c(mydata[mydata$smp == smp_nms[i],AA_src], mydata[mydata$smp == smp_nms[i], paste0(AA_src,"_SD")]),
         Beta = c(Beta, Beta_SD),
-        TDF1 = c(TDF1, TDF1_SD),
-        offset = c(3.4, 0.1))
+        TDF1 = c(TDF1, TDF1_SD)
+        )
     }
 
 
