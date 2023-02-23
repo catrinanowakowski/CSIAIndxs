@@ -4,7 +4,7 @@
 \alias{calc_source_mean}
 \title{FUNCTION_TITLE}
 \usage{
-calc_source_mean(id_col, corrected_data_col, data)
+calc_source_mean(id_col, corrected_data_col, std_col, data)
 }
 \arguments{
 \item{id_col}{PARAM_DESCRIPTION}

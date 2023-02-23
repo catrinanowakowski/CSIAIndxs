@@ -67,6 +67,7 @@ ggplot() +
 ```{r}
 df <- calc_source_mean(id_col = "smp", 
                        corrected_data_col = "Corrected_delta_15_N" ,
+                       std_col = "Stdev",
                        data = df)
 
 df
