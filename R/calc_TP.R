@@ -66,7 +66,7 @@ calc_TP <- function(df,
 
 
   # grab just one row of data
-  mydata <- mydata[mydata$AAs == "Glu",]
+  mydata <- mydata[mydata$AAs == AA_trp,]
   mydata <- mydata[!is.na(mydata$n),]
 
   if(eq_TDF_n == 1){
