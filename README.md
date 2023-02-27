@@ -55,7 +55,7 @@ df <- calc_TP(df = df)
 #> 
 #>     xor
 #> Attaching package ff
-#> - getOption("fftempdir")=="C:/Users/catri/AppData/Local/Temp/RtmpiiemYN/ff"
+#> - getOption("fftempdir")=="C:/Users/catri/AppData/Local/Temp/Rtmpmkf8t5/ff"
 #> - getOption("ffextension")=="ff"
 #> - getOption("ffdrop")==TRUE
 #> - getOption("fffinonexit")==TRUE
@@ -109,6 +109,7 @@ df <- calc_source_mean(id_col = "smp",
                        corrected_data_col = "Corrected_delta_15_N" ,
                        std_col = "Stdev",
                        data = df)
+
 
 df
 #>      smp AAs n        Mean       Stdev Corrected_delta_15_N T_S        TP
