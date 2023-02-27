@@ -20,7 +20,7 @@ calc_source_mean <- function(id_col, corrected_data_col,std_col , data){
   # std_col <- "Stdev"
 
   # s_df <-data[data$T_S =="S",]
-  s_df <-data[data$AAs %in% c("Lys", "Phe","Ser","Gly"),]
+  s_df <-data[data$AAs %in% c("Lys", "Phe"),]
   s_df <-aggregate(s_df[, corrected_data_col], by = list(id_col = s_df[,id_col]), FUN = "mean", na.rm = TRUE)
   names(s_df) <- c(id_col, "S_mean")
   s_df$S_mean_sd <- NA
