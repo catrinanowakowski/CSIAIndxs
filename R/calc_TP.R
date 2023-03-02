@@ -113,7 +113,7 @@ calc_TP <- function(df,
     }else if(eq_TDF_n == 4){
       DAT <- data.frame(
         AA_trp= c(mydata[mydata$smp == smp_nms[i],AA_trp], mydata[mydata$smp == smp_nms[i], paste0(AA_trp,"_SD")]),
-        offset = c(3.4, 0.1),
+        offset = c(5.12, 0.45),
         AA_src  = c(mydata[mydata$smp == smp_nms[i],AA_src], mydata[mydata$smp == smp_nms[i], paste0(AA_src,"_SD")]),
         Beta = c(Beta, Beta_SD),
         TDF1 = c(TDF1, TDF1_SD),
