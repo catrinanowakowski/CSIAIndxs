@@ -79,8 +79,8 @@ calc_TP <- function(df,
     #coral equation
     EXPR <- expression(( (AA_trp+offset) - AA_src - Beta)/TDF1 + 1)
   }else if(eq_TDF_n == 4){
-
-    EXPR <- expression(( (AA_trp+offset) - AA_src - TDF1 - Beta)/TDF2 + 2)
+    # EXPR <- expression(( (AA_trp+offset) - AA_src - TDF1 - Beta)/TDF2 + 2)
+    EXPR <- expression(( (AA_trp+offset) - AA_src - Beta)/TDF1 + 1)
   }
 
 
@@ -116,8 +116,8 @@ calc_TP <- function(df,
         offset = c(5.12, 0.45),
         AA_src  = c(mydata[mydata$smp == smp_nms[i],AA_src], mydata[mydata$smp == smp_nms[i], paste0(AA_src,"_SD")]),
         Beta = c(Beta, Beta_SD),
-        TDF1 = c(TDF1, TDF1_SD),
-        TDF2 = c(TDF2,TDF2_SD )
+        TDF1 = c(TDF1, TDF1_SD)
+        # TDF2 = c(TDF2,TDF2_SD )
         )
     }
 
