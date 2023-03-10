@@ -47,9 +47,7 @@ calc_TP <- function(df,
   # # primary, secondar, tertiary # from matts 2021 paper, he has a section that talks about pacific ocean and copepods
   # Beta <- 3.3 # Non Vascular beta
   # Beta_SD <- 1.8
-  #
-  # eq_TDF_n <- 3 #2
-  #
+  # eq_TDF_n <- 1
   # TDF1 <- 7.6 #copepod
   # TDF1_SD <- 1.4 # Chikaraishi et al 2007
   # TDF2 <- 5.5 #flying fish
@@ -121,7 +119,8 @@ calc_TP <- function(df,
         )
     }
 
-
+    DAT$AA_trp[2] <- 0
+    DAT$AA_src[2] <- 0
 
     # Conduct uncertainty propagation using default settings (see `?propagate` for more options)
     res <- propagate(EXPR, as.matrix(DAT), second.order=FALSE, do.sim=TRUE, cov=TRUE, df=NULL,
